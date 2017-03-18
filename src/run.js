@@ -59,7 +59,7 @@ export default async function task (total, file) {
       data[9] = m.format('YYYYMM')
       data[11] = m.format('YYYY')
       m.date(_.random(1, 31))
-      data[0] = m.format()
+      data[0] = m.valueOf()
       let str = data.join(',') + '\n'
       await append(file, str)
       console.log((count + i) + '/' + total)
