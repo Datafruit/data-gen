@@ -1,0 +1,44 @@
+include parts/head1
+meta(name='description', content='#{siteDesc}')
+meta(name='keywords', content='#{siteKeywords}')
+title #{siteName}
+style.
+  #logo {
+    font-size: 240px;
+    margin: 0;
+  }
+  #logo:before {
+    margin: 0;
+  }
+include parts/head2
+#wrapper
+  #content.container
+    .p-y-2.p-x-3
+
+      .text-xs-center
+        h1
+          数据生成器
+      .p-y-2
+        .unit(key='i' v-for='(unit, i) in templates')
+          .form-group
+            input.form-control(model='unit.name', placeholder='名称')
+          .form-group
+            input.form-control(model='unit.template', placeholder='模板')
+        .control
+          button.btn.btn-primary(@click='addUnit') 添加一列
+      .p-y-3
+        h2 预览
+
+        table.table.table-striped.table-bordered.table-sm.table-responsive
+          thead
+            tr
+              th(key='i' v-for='(unit, i) in templates') {{unit.name}}
+          tbody
+            tr(key='i' v-for='(p, i) in previewData')
+              td(key='j' v-for='(n, j) in p') {{n}}
+
+
+      include parts/footer-html
+
+include parts/footer-js
+include parts/footer-end

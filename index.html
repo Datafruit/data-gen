@@ -1,0 +1,78 @@
+<!DOCTYPE html><html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="x-ua-compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether-theme-arrows-dark.min.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="http://jade-press.org/public/css/style.css?0.0.1" /><meta name="description" content="cms based on mongodb, nodejs, koa, vue and more"><meta name="keywords" content="jade-press,nodejs,mongodb"><title>jade-press.org</title><style>#logo {
+	font-size: 240px;
+	margin: 0;
+}
+#logo:before {
+	margin: 0;
+}</style></head>
+<body><div id="wrapper"><div id="content" class="container"><div class="p-y-2 p-x-3"><div class="text-xs-center"><h1><span id="logo" class="icon-jadepress1"></span></h1><p class="lead"><code>jade-press</code> is a cms based on mongodb, nodejs, koa, vue and more</p><hr class="m-y-2"><p class="lead btn-group"><a href="https://github.com/jade-press/jade-press" role="button" rel="external nofollow" target="_blank" class="btn btn-primary"><span class="icon-github-circled-alt2"></span>github</a><a href="https://github.com/jade-press/jade-press/releases" role="button" rel="external nofollow" target="_blank" class="btn btn-warning"><span class="icon-download-cloud"></span>download</a></p></div><div class="p-y-2"></div><h3 class="text-xs-center">try it</h3><hr><pre class="prettyprint lang-bash"># make sure your mongodb running
+# visit https://www.mongodb.com/download-center?jmp=nav#community for more info
+
+# make sure cairo installed,
+# visit https://github.com/Automattic/node-canvas/wiki/_pages for system spec
+
+git clone git@github.com:jade-press/jade-press.git
+cd jade-press
+npm install
+cp config-sample.js config.js
+
+# read and edit config.js to define all the settings 
+
+# install plugins if have plugins
+gulp install
+
+# run it
+node app
+
+#then visit http://127.0.0.1:7200 (if use default setting)
+</pre><div class="p-y-2"></div><h2>features</h2><hr><ul><li class="p-b-1">based on mongodb(database and session), nodejs 5+, koa, vue...</li><li class="p-b-1">built in jade(pug) editor</li><li class="p-b-1">file upload (to mongodb gridfs), insert, manage</li><li class="p-b-1">custom routes</li><li class="p-b-1">plugin system</li><li class="p-b-1">theme system</li><li class="p-b-1">user system</li><li class="p-b-1">user groups and custom access control based on url</li><li class="p-b-1">post and category</li><li class="p-b-1">custom style & script & features file/image for every post</li><li class="p-b-1">can be used as a module to extend</li><li class="p-b-1">auto-database-update between different versions</li></ul><div class="p-y-2"></div><h2>use jade-press as a module</h2><hr><pre class="prettyprint lang-javascript">//config.js
+
+//.... other setting
+    ,theme: {
+        path: __dirname
+        ,name: 'your-name'
+        ,version: 'xx.xx.xx'
+    }
+//.... other setting
+</pre><pre class="prettyprint lang-javascript">//app.js
+
+/*!
+ * main entrance
+**/
+
+'use strict'
+
+let init = require('jade-press').init
+,co = require('co')
+,config = require('./config')
+
+co(init(config))
+.then(function(app) {
+    let port = config.local.port
+    app.listen(port, '127.0.0.1', function() {
+        console.log('' + new Date(), config.local.siteName, 'runs on port', port)
+    })
+}, function(err) {
+    console.error(err.stack || err)
+})
+
+</pre><p>example: <a href="https://github.com/jade-press/blog.jade-press.org" rel="external nofollow" target="_blank">https://github.com/jade-press/blog.jade-press.org </a></p><div class="p-y-2"></div><h2>theme</h2><hr><div>check the examples:</div><ul><li><a href="https://github.com/jade-press/jadepress-theme-pi" rel="external nofollow" target="_blank">basic theme: jadepress-theme-pi</a></li><li><a href="https://github.com/jade-press/jadepress-react-spa" rel="external nofollow" target="_blank">react spa theme(react, redux, history api)</a></li><li><a href="https://github.com/jade-press/jadepress-vue-spa" rel="external nofollow" target="_blank">vue spa theme(vue1.x, vuex, vue-router)</a></li></ul><div class="p-y-2"></div><h2>plugin</h2><hr><div>check the examples:</div><ul><li><a href="https://github.com/jade-press/jadepress-plugin-qr" rel="external nofollow" target="_blank">https://github.com/jade-press/jadepress-plugin-qr</a></li><li><a href="https://github.com/jade-press/jadepress-redis" rel="external nofollow" target="_blank">https://github.com/jade-press/jadepress-redis</a></li><li><a href="https://github.com/jade-press/jadepress-static" rel="external nofollow" target="_blank">https://github.com/jade-press/jadepress-static</a></li></ul><div class="p-y-2"></div><h2>license</h2><hr><p>MIT</p><div class="p-y-3"></div><footer id="footer"><hr><p>&copy; 2016 
+by  <a href="http://html5beta.com" target="_blank">ZHAO Xudong</a></p></footer></div></div></div><script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script><script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script><script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script><script>;(function() {
+	
+	prettyPrint()
+
+})()</script><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=zxdong262" async="async"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
+ga('create', 'UA-77265281-1', 'auto')
+ga('send', 'pageview')
+
+</script></body></html>
