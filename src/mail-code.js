@@ -32,7 +32,7 @@ const codes = `安徽省 230000
 香港特别行政区 111111
 澳门特别行政区 222222
 内蒙古自治区 010000`.split('\n').reduce((prev, c) => {
-  let arr = c.split(' ')
+  let arr = c.split(/\s+/g)
   prev[arr[0]] = arr[1]
   return prev
 }, {})
