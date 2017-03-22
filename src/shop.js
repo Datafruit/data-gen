@@ -225,11 +225,11 @@ let nets = `001	北京人才服务网点	广州市
   let [num, name, city] = n.split(/\s+/g)
   let contact = nameGen()
   let id = i + 231
-  let equpId = '0' + (Number('0x55214DF000005B0') + i).toString(16)
+  let equipId = '0' + (Number('0x55214DF000005B0') + i).toString(16)
   let {id: businessCode, name: businessName} = busiCode()
   let {id: machineKey, name: machineName} = machine()
   return {
-    num, name, city, contact, id, equpId,
+    num, name, city, contact, id, equipId,
     ip: ip(),
     businessCode,
     businessName,
