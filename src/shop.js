@@ -3,6 +3,7 @@ import nameGen from './name'
 import ip from './ip'
 import busiCode from './busi-code'
 import machine from './machine'
+import zoneCode from './zone-code'
 
 let nets = `001	北京人才服务网点	广州市
 002	广州市安定门服务网点	广州市
@@ -233,6 +234,7 @@ let nets = `001	北京人才服务网点	广州市
     ip: ip(),
     businessCode,
     businessName,
+    zoneCode: zoneCode(),
     machineKey,
     machineName
   }

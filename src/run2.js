@@ -120,7 +120,7 @@ export default async function task (total, file) {
         comp.id,
         // 单位名称	string
         // 区域行政编码	string
-        shopObj.cityCode,
+        shopObj.zoneCode,
         // 卡有效期	datestring
         date('YYYY-MM-DD', undefined, undefined, undefined, [2020, 2040]),
         // 银行帐号	string
