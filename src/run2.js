@@ -16,6 +16,7 @@ import app from './app'
 import zoneRole from './zone-role'
 import shop from './shop'
 import ip from './ip'
+import state from './state'
 import {write, append} from './file'
 import _ from 'lodash'
 import moment from 'moment'
@@ -133,7 +134,7 @@ export default async function task (total, file) {
         // 磁条银行卡号	string
         id + '00',
         // 写磁条数据	string
-        '无写磁条数据',
+        state(),
         // 金融IC银行卡号	string
         id + '00',
         // 区域角色	string
@@ -149,11 +150,11 @@ export default async function task (total, file) {
         // 联系人	string
         shopObj.contact,
         // 网点状态	string
-        '01',
+        state(),
         // 设备ID	string
         shopObj.id,
         // 设备类型	string
-        '01',
+        state(),
         // 终端机编号	string
         shopObj.equipId,
         // 设备信息	string
@@ -165,13 +166,13 @@ export default async function task (total, file) {
         // 当前设备IP	string
         ip(),
         // 设备状态	string
-        '01',
+        state(),
         // 设备密钥名称	string
         shopObj.machineName,
         // 设备密钥值	string
         shopObj.machineKey,
         // 设备密钥状态	string
-        '01',
+        state(),
         // 业务编号	string
         shopObj.businessCode,
         // 业务说明	string
