@@ -8,7 +8,7 @@ let count2 = 1000000
 
 async function task () {
   await run(count1, f1)
-  await run(count2, f2)
+  //await run(count2, f2)
 }
 
 task()

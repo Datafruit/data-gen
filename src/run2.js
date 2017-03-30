@@ -25,6 +25,7 @@ const log = console.log
 export default async function task (total, file) {
   log(total, file)
   let initStr = seed.map(s => s.name).join(',') + '\n' +
+    seed.map(s => s.nameEn).join(',') + '\n' +
     seed.map(s => s.type).join(',') + '\n'
 
   let cardNumberbase = _.random(digit(19), Math.floor(digit(20) * 0.5 - 1))
@@ -58,6 +59,12 @@ export default async function task (total, file) {
       let data = _.cloneDeep(person)
       m.date(_.random(1, 31))
       data[0] = m.valueOf()
+      let dayStr = m.format('YYYY-MM-DD')
+      let monStr = m.format('YYYY-MM')
+      let yearStr = m.format('YYYY')
+      data[1] = dayStr
+      data[2] = monStr
+      data[3] = yearStr
       str += data.join(',') + '\n'
       log((count + i) + '/' + total)
     }
@@ -83,6 +90,12 @@ export default async function task (total, file) {
 
       let arr = [
         // 日期
+        0,
+        //日期(天) date_day string
+        0,
+        //日期(月) date_month string
+        0,
+        //日期(年) date_year string
         0,
         // 公民身份号码	string
         id,
@@ -122,11 +135,11 @@ export default async function task (total, file) {
         // 区域行政编码	string
         shopObj.zoneCode,
         // 卡有效期	datestring
-        date('YYYY-MM-DD', undefined, undefined, undefined, [2020, 2040]),
+        moment(date('YYYY-MM-DD', undefined, undefined, undefined, [2020, 2040])).valueOf(),
         // 银行帐号	string
         cardNumberbase + i,
         // 银行帐号有效期	datestring
-        date('YYYY-MM-DD', undefined, undefined, undefined, [2020, 2040]),
+        moment(date('YYYY-MM-DD', undefined, undefined, undefined, [2020, 2040])).valueOf(),
         // 城市代码	string
         shopObj.cityCode,
         // 初始化机构编号	string
