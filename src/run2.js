@@ -24,8 +24,8 @@ const log = console.log
 
 export default async function task (total, file) {
   log(total, file)
-  let initStr = seed.map(s => s.name).join(',') + '\n' +
-    seed.map(s => s.nameEn).join(',') + '\n' +
+  //let //initStr = seed.map(s => s.name).join(',') + '\n' +
+  let initStr = seed.map(s => s.nameEn).join(',') + '\n' +
     seed.map(s => s.type).join(',') + '\n'
 
   let cardNumberbase = _.random(digit(19), Math.floor(digit(20) * 0.5 - 1))
